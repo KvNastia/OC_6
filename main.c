@@ -12,7 +12,7 @@
 
 int main() {
 
-    char *filename = "/var/run/collectd-unixsock";
+    char *filename = "/var/run/collectd-unixsock"; //объявление файла по умолчанию
 
     int sock = socket(PF_UNIX, SOCK_STREAM, 0);
 
