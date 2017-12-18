@@ -12,7 +12,7 @@
 
 int main() {
 
-    char *filename = "/var/run/collectd-unixsock";
+    char *filename = "/var/run/collectd-unixsock";  //указываем путь к socket используя флаген unixsock
 
     int sock = socket(PF_UNIX, SOCK_STREAM, 0);
 
@@ -21,12 +21,12 @@ int main() {
         exit(1);
     }
 
-    struct sockaddr_un addr;
+    struct sockaddr_un addr; // обработка на ошибку
     strncpy(addr.sun_path, filename, sizeof(addr.sun_path));
     addr.sun_family = AF_UNIX;
     int size = sizeof(addr);
 
-    if (connect(sock, (struct sockaddr *)&addr, size) < 0) {
+    if (connect(sock, (struct sockaddr *)&addr, size) < 0) { 
         perror("connect");
         exit(2);
     }
